@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${guitar.manufacturer + ' ' + guitar.model}]]</title>
+</head>
+<body>
+<a th:href="@{/catalogue/products/guitars/list}">&larr; К списку товаров</a>
+<h1 th:text="${guitar.manufacturer + ' ' + guitar.model}"></h1>
+<ul>
+    <li><strong>ID</strong>: <span th:text="${guitar.id}"></span>    </li>
+    <li><strong>Manufacturer</strong>: <span th:text="${guitar.manufacturer}"></span>    </li>
+    <li><strong>Model</strong>: <span th:text="${guitar.model}"></span>    </li>
+    <li><strong>Prise</strong>: <span th:text="${guitar.price}"></span>    </li>
+    <li><strong>Description</strong>: <span th:text="${guitar.description}"></span>    </li>
+</ul>
+<a th:href="@{/catalogue/products/guitars/{guitarId}/edit(guitarId=${guitar.id})}">Изменить</a>
+
+<form method="post" th:action="@{/catalogue/products/guitars/{guitarId}/delete(guitarId=${guitar.id})}">
+    <button type="submit">Удалить</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список гитар</title>
+</head>
+<body>
+<a th:href="@{/catalogue/products/guitars/create}">&larr; Создать гитару</a>
+<h1>Список гитар</h1>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Гитара</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="guitar : ${guitars}">
+        <td th:text="${guitar.id}">ID</td>
+        <td>
+            <a th:text="${guitar.manufacturer + ' ' + guitar.model}"
+               th:href="@{/catalogue/products/guitars/{guitarId}(guitarId=${guitar.id})}">
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

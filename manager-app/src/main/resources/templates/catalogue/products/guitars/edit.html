@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать гитару [[${guitar.manufacturer + ' ' + guitar.model}]]</title>
+</head>
+<body>
+<a th:href="@{/catalogue/products/guitars/{guitarId}(guitarId=${guitar.id})}">&larr; К товару</a>
+<h1>Изменить гитару</h1>
+<form method="post" th:action="@{/catalogue/products/guitars/{guitarId}/edit(guitarId=${guitar.id})}">
+    <label>
+        Производитель:<br>
+        <input type="text" name="manufacturer" th:value="${guitar.manufacturer}">
+    </label><br>
+    <label>
+        Модель:<br>
+        <input type="text" name="model" th:value="${guitar.model}">
+    </label><br>
+    <label>
+        Цена:<br>
+        <input type="text" name="price" th:value="${guitar.price}">
+    </label><br>
+    <label>
+        Описание:<br>
+        <input type="text" name="description" th:value="${guitar.description}">
+    </label><br>
+
+    <button type="submit">Обновить</button>
+</form>
+
+</body>
+</html>
